@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<!-- 工具配置文件（自动生成java类） -->
+
+<!-- D:\mybatis-generator-core-1.3.2\lib>java -jar mybatis-generator-core-1.3.2.jar -configfile generatorConfig_ccms.xml -overwrite -->
+
+<generatorConfiguration>
+	<!-- 设置mysql驱动路径 -->
+	<classPathEntry location="./mysql-5.1.26.jar" />
+	<!-- 此处指定生成针对MyBatis3的DAO -->
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<!-- 是否注释，false为注释 -->
+			<property name="suppressAllComments" value="false" />
+			<!-- 是用来除去时间信息的，这在配合类似subversion的代码管理工具时使用很有效，因为可以减少没有必要的注释迁入 -->
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+
+		<!-- jdbc连接信息 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.0.122:3306/ccms"
+			userId="ccms" password="admin123" />
+
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false"/>
+		</javaTypeResolver>
+
+		<!-- 模型的生成信息，这里将指定这些Java model(VO)类的生成路径 -->
+		<javaModelGenerator targetPackage="cn.com.ccms.pojo"
+							targetProject="./">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+
+		<!-- mybatis 的sqlMapper XML文件的生成信息，包括生成路径等 -->
+		<sqlMapGenerator targetPackage="cn.com.ccms.dao"
+						 targetProject="./">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="true"/>
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true"/>
+		</sqlMapGenerator>
+
+		<!-- 是应用接口的生成信息(DAO Interface) -->
+		<javaClientGenerator type="XMLMAPPER"
+							 targetPackage="cn.com.ccms.dao" targetProject="./">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+
+		<!-- 测试.用户表 -->
+		<table schema="" tableName="test_user" domainObjectName="MtestUser">
+			<generatedKey column="id" sqlStatement="select F_GETNID()" identity="false" />
+		</table>
+		<!-- 用户表 -->
+		<table schema="" tableName="t_user" domainObjectName="Muser">
+			<generatedKey column="id" sqlStatement="select F_GETNID()" identity="false" />
+		</table>
+		<!-- 角色表 -->
+		<table schema="" tableName="t_role" domainObjectName="Mrole">
+			<generatedKey column="id" sqlStatement="select F_GETNID()" identity="false" />
+		</table>
+		<!-- 用户与角色表 -->
+		<table schema="" tableName="t_user_role" domainObjectName="MuserRole">
+			
+		</table>
+		<!-- 菜单表 -->
+		<table schema="" tableName="t_menu" domainObjectName="Mmenu">
+			<generatedKey column="id" sqlStatement="select F_GETNID()" identity="false" />
+		</table>
+		<!-- 资源表 -->
+		<table schema="" tableName="t_access_permissions" domainObjectName="MaccessPermissions">
+			<generatedKey column="id" sqlStatement="select F_GETNID()" identity="false" />
+		</table>
+		<!-- 角色菜单表 -->
+		<table schema="" tableName="t_role_menu" domainObjectName="MroleMenu">
+		</table>
+		<!-- 商品表 -->
+		<table schema="" tableName="t_diccommodity" domainObjectName="Mcommodity">
+			<generatedKey column="id" sqlStatement="select F_GETNID()" identity="false" />
+		</table>
+		<!-- 城市表 -->		
+		<table schema="" tableName="t_area" domainObjectName="Marea">
+			<generatedKey column="id" sqlStatement="select F_GETNID()" identity="false" />
+		</table> 
+		<!-- 地市表 -->		
+		<table schema="" tableName="t_region" domainObjectName="Mregion">
+			<generatedKey column="id" sqlStatement="select F_GETNID()" identity="false" />
+		</table>
+		<!-- 一级品类表-->
+		<table schema="" tableName="t_fircategroy" domainObjectName="Mfircategroy">
+			<generatedKey column="id" sqlStatement="select F_GETNID()" identity="false" />
+		</table> 
+		<!-- 二级品类表-->
+		<table schema="" tableName="t_seccategroy" domainObjectName="Mseccategroy">
+			<generatedKey column="id" sqlStatement="select F_GETNID()" identity="false" />
+		</table>
+	</context>
+</generatorConfiguration>
