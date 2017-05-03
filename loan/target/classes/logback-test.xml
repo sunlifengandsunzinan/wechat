@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+
+<configuration>
+	<property resource="config-zsc.properties"/>
+
+	<contextName>${app.context.name.en}</contextName>
+	<property name="LOG_HOME" value="${catalina.base}/logs"/>
+	<property name="MaxHistory" value="${log.max.history}"/>
+	<property name="MaxFileSize" value="${log.max.file.size}"/>
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<Encoding>UTF-8</Encoding>
+		<encoder>
+			<pattern>%date %-5level [${HOSTNAME} %thread] %caller{1}%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="cn.com.loan" level="DEBUG"/>
+	<logger name="cn.com.loan.dao" level="DEBUG"/>
+
+	<logger name="java.sql" level="DEBUG"/>
+	<logger name="org.apache.commons.dbcp" level="DEBUG"/>
+
+	<logger name="org.springframework" level="DEBUG"/>
+	<logger name="org.springframework.jdbc" level="INFO"/>
+	<logger name="org.springframework.cache" level="INFO"/>
+
+	<logger name="org.mybatis" level="DEBUG"/>
+	<logger name="org.apache.ibatis" level="DEBUG"/>
+
+	<logger name="net.sf.ehcache" level="DEBUG"/>
+	<logger name="org.jgroups" level="DEBUG"/>
+
+	<logger name="org.apache.shiro" level="DEBUG"/>
+
+	<logger name="org.quartz" level="INFO"/>
+	<logger name="org.springframework.scheduling.quartz" level="INFO"/>
+
+	<root level="INFO">
+		<appender-ref ref="stdout"/>
+	</root>
+</configuration>
